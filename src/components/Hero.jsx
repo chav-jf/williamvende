@@ -70,7 +70,7 @@ export default function Hero() {
                 className={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-base font-medium transition-colors ${
                   active
                     ? 'bg-[#1C2E1E] text-white shadow-md shadow-emerald-950/5 transform'
-                    : 'bg-white text-[#1C2E1E] border border-[#F1F3F1] hover:bg-[#F1F3F1]/55'
+                    : 'bg-white text-[#1C2E1E] border border-black hover:bg-[#F1F3F1]/55'
                 }`}
               >
                 <AnimatePresence>

@@ -6,32 +6,34 @@ export default function BackgroundVideo() {
   const videoRef = useRef(null)
 
   // Desktop (>= 1024px): scrub the video with horizontal mouse movement.
+  // Mouse events only update a TARGET time; a requestAnimationFrame loop eases
+  // the real playhead toward it, so motion stays smooth and never stutters.
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
     let prevX = null
-    let targetTime = 0
-    let isSeeking = false
+    let targetTime = null
+    let displayTime = null
+    let rafId = null
 
-    const onSeeked = () => {
-      isSeeking = false
-    }
+    const isDesktop = () => window.innerWidth >= 1024
 
-    // The clip fades in from black, so on desktop (where there's no autoplay,
-    // only scrubbing) we park it near the end to reveal the full figure on load.
-    const setInitialFrame = () => {
-      if (window.innerWidth < 1024) return
+    // The clip fades in from black, so on desktop (no autoplay, only scrubbing)
+    // we park it near the end to reveal the full figure on load.
+    const initFrame = () => {
       const duration = video.duration
       if (!duration || Number.isNaN(duration)) return
       targetTime = Math.max(0, duration - 0.1)
-      video.currentTime = targetTime
+      displayTime = targetTime
+      if (isDesktop()) video.currentTime = displayTime
     }
 
     const handleMove = (e) => {
-      if (window.innerWidth < 1024) return
+      if (!isDesktop()) return
       const duration = video.duration
       if (!duration || Number.isNaN(duration)) return
+      if (targetTime === null) initFrame()
 
       if (prevX === null) {
         prevX = e.clientX
@@ -43,23 +45,31 @@ export default function BackgroundVideo() {
 
       targetTime += (delta / window.innerWidth) * 0.8 * duration
       targetTime = Math.max(0, Math.min(duration, targetTime))
+    }
 
-      // Only issue a new seek once the previous one settled — keeps tracking smooth.
-      if (!isSeeking) {
-        isSeeking = true
-        video.currentTime = targetTime
+    const tick = () => {
+      rafId = requestAnimationFrame(tick)
+      if (!isDesktop() || targetTime === null || displayTime === null) return
+      const diff = targetTime - displayTime
+      if (Math.abs(diff) > 0.0008) {
+        displayTime += diff * 0.2 // easing — higher = snappier, lower = smoother
+        try {
+          video.currentTime = displayTime
+        } catch {
+          /* ignore transient seek errors */
+        }
       }
     }
 
-    if (video.readyState >= 1) setInitialFrame()
-    else video.addEventListener('loadedmetadata', setInitialFrame, { once: true })
+    if (video.readyState >= 1) initFrame()
+    else video.addEventListener('loadedmetadata', initFrame, { once: true })
 
-    video.addEventListener('seeked', onSeeked)
     window.addEventListener('mousemove', handleMove)
+    rafId = requestAnimationFrame(tick)
     return () => {
       window.removeEventListener('mousemove', handleMove)
-      video.removeEventListener('seeked', onSeeked)
-      video.removeEventListener('loadedmetadata', setInitialFrame)
+      if (rafId) cancelAnimationFrame(rafId)
+      video.removeEventListener('loadedmetadata', initFrame)
     }
   }, [])
 
@@ -86,8 +96,6 @@ export default function BackgroundVideo() {
         preload="auto"
         className="w-full h-full object-cover object-right lg:object-right-bottom"
       />
-      {/* Legibility scrim behind the headline on desktop (the clip is dark). */}
-      <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-white from-5% via-white/85 via-45% to-transparent to-90%" />
     </div>
   )
 }
