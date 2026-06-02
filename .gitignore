@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local asset backups (large, not used at runtime)
+backup/
+
+# Local env / editor / OS
+*.local
+.claude/settings.local.json
+.DS_Store
+.vscode/
+npm-debug.log*
