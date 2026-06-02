@@ -94,7 +94,7 @@ export default function BackgroundVideo() {
         muted
         playsInline
         preload="auto"
-        className="w-full h-full object-cover object-right lg:object-right-bottom"
+        className="w-full h-full object-cover object-right lg:object-right-top lg:translate-y-[9%]"
       />
     </div>
   )

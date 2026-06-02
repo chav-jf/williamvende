@@ -17,12 +17,9 @@ export default function Catalog() {
     >
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
         <div>
-          <p className="text-[#738273] text-sm uppercase tracking-widest mb-2">
+          <p className="text-[#738273] text-sm uppercase tracking-widest">
             Catálogo
           </p>
-          <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-black">
-            Originales, listos para ti
-          </h2>
         </div>
         <div className="flex gap-2">
           {FILTERS.map((f) => (

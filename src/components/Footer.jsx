@@ -71,7 +71,6 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6 text-white/40 text-xs flex flex-col sm:flex-row justify-between gap-2">
           <span>© {new Date().getFullYear()} WILLIAM VENDE. Todos los derechos reservados.</span>
-          <span>Productos Apple 100% originales.</span>
         </div>
       </div>
     </footer>

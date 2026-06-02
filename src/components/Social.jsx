@@ -53,13 +53,6 @@ export default function Social() {
           </div>
         )}
 
-        <p className="text-xs text-[#738273] mt-6">
-          ¿Eres el administrador? Pega los links de los videos en{' '}
-          <code className="bg-white px-1.5 py-0.5 rounded border border-[#F1F3F1]">
-            src/data/tiktok.js
-          </code>
-          .
-        </p>
       </div>
     </section>
   )
