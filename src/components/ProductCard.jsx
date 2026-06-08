@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import { Plus, Check, ChevronDown } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 import Garantia from './Garantia'
+import PriceCounter from './PriceCounter'
 
 const fmt = (n) => '$' + n.toLocaleString('es-CO')
 
@@ -37,7 +38,7 @@ export default function ProductCard({ product }) {
         <div className="flex items-center justify-between gap-3">
           <div>
             <p className="text-[11px] uppercase tracking-[0.18em] text-gold-deep font-semibold">Desde</p>
-            <p className="text-lg font-semibold text-ink">{fmt(product.priceFrom)}</p>
+            <PriceCounter value={product.priceFrom} className="text-lg font-semibold text-ink" />
           </div>
           <button
             onClick={onAdd}
