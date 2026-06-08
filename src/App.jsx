@@ -14,7 +14,7 @@ export default function App() {
       {/* HERO SCREEN (replicates the provided spec layout) */}
       <div
         id="top"
-        className="relative bg-white text-neutral-900 font-sans selection:bg-[#EAECE9] selection:text-[#1C2E1E] antialiased overflow-x-hidden flex flex-col lg:block lg:min-h-screen"
+        className="relative bg-white text-neutral-900 font-sans selection:bg-[#EAECE9] selection:text-ink antialiased overflow-x-hidden flex flex-col lg:block lg:min-h-screen"
       >
         <BackgroundVideo />
 

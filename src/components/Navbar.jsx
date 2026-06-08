@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ShoppingBag } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useCart } from '../context/CartContext'
+import Logo from './Logo'
 
 const LINKS = [
   { label: 'Catálogo', href: '#catalogo' },
@@ -22,20 +23,13 @@ export default function Navbar() {
     <>
       <header className="fixed top-0 inset-x-0 z-10 px-5 sm:px-8 py-4 sm:py-5 flex flex-row justify-between items-center bg-transparent">
         {/* Logo */}
-        <a href="#top" className="flex flex-row items-center gap-3">
-          <span className="text-[21px] sm:text-[26px] tracking-tight text-black font-medium select-none">
-            WILLIAM VENDE
-          </span>
-          <span className="text-[25px] sm:text-[30px] text-black select-none tracking-[-0.02em] font-medium leading-none mb-1">
-            &#10033;
-          </span>
-        </a>
+        <Logo variant="light" />
 
         {/* Center nav (desktop) */}
         <nav className="hidden md:flex flex-row items-center text-[23px] text-black">
           {LINKS.map((l, i) => (
             <span key={l.href} className="flex items-center">
-              <a href={l.href} className="hover:opacity-60 transition-opacity">
+              <a href={l.href} className="hover:text-gold-deep transition-colors">
                 {l.label}
               </a>
               {i < LINKS.length - 1 && <span className="opacity-40">,&nbsp;</span>}
@@ -48,7 +42,7 @@ export default function Navbar() {
           <button
             onClick={openCart}
             aria-label="Abrir carrito"
-            className="relative text-black hover:opacity-60 transition-opacity"
+            className="relative text-black hover:text-gold-deep transition-colors"
           >
             <ShoppingBag className="w-6 h-6" strokeWidth={1.6} />
             {count > 0 && (
@@ -57,7 +51,7 @@ export default function Navbar() {
                 initial={{ scale: 0.4 }}
                 animate={{ scale: 1 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 18 }}
-                className="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-[#1C2E1E] text-white text-[11px] font-medium flex items-center justify-center"
+                className="absolute -top-2 -right-2 min-w-[18px] h-[18px] px-1 rounded-full bg-ink text-gold text-[11px] font-semibold flex items-center justify-center ring-1 ring-gold/40"
               >
                 {count}
               </motion.span>
@@ -68,7 +62,7 @@ export default function Navbar() {
             href={WHATSAPP}
             target="_blank"
             rel="noreferrer"
-            className="hidden md:inline text-[23px] text-black underline underline-offset-2 hover:opacity-60 transition-opacity"
+            className="hidden md:inline text-[23px] text-black underline underline-offset-2 decoration-gold-deep/60 hover:text-gold-deep transition-colors"
           >
             WhatsApp
           </a>
@@ -81,8 +75,8 @@ export default function Navbar() {
             aria-expanded={isMobileMenuOpen}
           >
             <span
-              className={`w-6 h-[2px] bg-black transition-all duration-300 ${
-                isMobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''
+              className={`w-6 h-[2px] transition-all duration-300 ${
+                isMobileMenuOpen ? 'bg-gold rotate-45 translate-y-[7px]' : 'bg-black'
               }`}
             />
             <span
@@ -91,8 +85,8 @@ export default function Navbar() {
               }`}
             />
             <span
-              className={`w-6 h-[2px] bg-black transition-all duration-300 ${
-                isMobileMenuOpen ? '-rotate-45 -translate-y-[7px]' : ''
+              className={`w-6 h-[2px] transition-all duration-300 ${
+                isMobileMenuOpen ? 'bg-gold -rotate-45 -translate-y-[7px]' : 'bg-black'
               }`}
             />
           </button>
@@ -101,16 +95,19 @@ export default function Navbar() {
 
       {/* Mobile navigation overlay */}
       <div
-        className={`md:hidden fixed inset-0 z-[9] bg-white/95 backdrop-blur-sm transition-opacity duration-300 flex flex-col items-center justify-center gap-8 ${
+        className={`md:hidden fixed inset-0 z-[9] bg-ink/97 backdrop-blur-sm transition-opacity duration-300 flex flex-col items-center justify-center gap-8 ${
           isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
+        <div className="absolute top-6 left-6">
+          <Logo variant="dark" />
+        </div>
         {LINKS.map((l) => (
           <a
             key={l.href}
             href={l.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="text-3xl font-medium tracking-tight text-black"
+            className="text-3xl font-medium tracking-tight text-white hover:text-gold transition-colors"
           >
             {l.label}
           </a>
@@ -120,7 +117,7 @@ export default function Navbar() {
           target="_blank"
           rel="noreferrer"
           onClick={() => setIsMobileMenuOpen(false)}
-          className="text-3xl font-medium tracking-tight text-[#1C2E1E] underline underline-offset-4"
+          className="text-3xl font-serif italic font-semibold tracking-tight text-gold underline underline-offset-4 decoration-gold/50"
         >
           WhatsApp
         </a>

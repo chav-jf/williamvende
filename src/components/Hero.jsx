@@ -21,11 +21,23 @@ export default function Hero() {
 
   return (
     <div className="w-full">
-      {/* Headline */}
+      {/* Eyebrow */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+      >
+        <p className="flex items-center gap-2 text-gold-deep text-xs sm:text-sm uppercase tracking-[0.28em] font-medium mb-5">
+          <span className="text-base leading-none">&#10022;</span>
+          Premium Apple Products
+        </p>
+      </motion.div>
+
+      {/* Headline */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.05 }}
       >
         <h1 className="text-5xl md:text-6xl lg:text-[76px] font-normal tracking-tight text-black leading-[1.08] mb-8 select-none w-full whitespace-pre-wrap">
           {displayed}
@@ -69,8 +81,8 @@ export default function Hero() {
                 whileTap={{ scale: 0.95 }}
                 className={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-base font-medium transition-colors ${
                   active
-                    ? 'bg-[#1C2E1E] text-white shadow-md shadow-emerald-950/5 transform'
-                    : 'bg-white text-[#1C2E1E] border border-black hover:bg-[#F1F3F1]/55'
+                    ? 'bg-ink text-white shadow-md shadow-black/5 ring-1 ring-gold/40 transform'
+                    : 'bg-white text-ink border border-black/15 hover:border-gold-deep hover:text-gold-deep'
                 }`}
               >
                 <AnimatePresence>
@@ -82,7 +94,7 @@ export default function Hero() {
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                       className="inline-flex overflow-hidden"
                     >
-                      <Check className="w-4 h-4" strokeWidth={2.5} />
+                      <Check className="w-4 h-4 text-gold" strokeWidth={2.5} />
                     </motion.span>
                   )}
                 </AnimatePresence>
@@ -101,7 +113,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
-                className="italic text-xs text-[#1C2E1E]"
+                className="italic text-xs text-ink"
               >
                 Haz clic para seleccionar arriba.
               </motion.p>
@@ -114,8 +126,8 @@ export default function Hero() {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAFBF9] border border-[#F1F3F1] rounded-2xl px-5 py-4 max-w-2xl">
-                  <p className="text-sm text-[#1C2E1E]">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#FAFBF9] border border-black/5 border-l-2 border-l-gold rounded-2xl px-5 py-4 max-w-2xl">
+                  <p className="text-sm text-ink">
                     Listo para consultar:{' '}
                     <span className="font-medium">{services.join(', ')}</span>
                   </p>
@@ -123,7 +135,7 @@ export default function Hero() {
                     href={waHref}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-[#4D6D47] uppercase text-xs font-semibold tracking-wide hover:gap-2 transition-all whitespace-nowrap"
+                    className="inline-flex items-center gap-1 text-gold-deep uppercase text-xs font-semibold tracking-wide hover:gap-2 transition-all whitespace-nowrap"
                   >
                     Vamos <ArrowUpRight className="w-4 h-4" />
                   </a>

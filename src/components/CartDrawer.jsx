@@ -53,7 +53,7 @@ export default function CartDrawer() {
                 <a
                   href="#catalogo"
                   onClick={closeCart}
-                  className="text-[#1C2E1E] underline underline-offset-4"
+                  className="text-gold-deep underline underline-offset-4"
                 >
                   Ver catálogo
                 </a>
@@ -80,7 +80,7 @@ export default function CartDrawer() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="font-medium text-sm text-black truncate">{it.name}</p>
-                          <p className="text-sm text-[#1C2E1E] font-semibold">
+                          <p className="text-sm text-ink font-semibold">
                             Desde {fmt(it.priceFrom)}
                           </p>
                           <div className="flex items-center gap-3 mt-2">
@@ -118,7 +118,7 @@ export default function CartDrawer() {
                 <div className="border-t border-[#F1F3F1] px-6 py-5 flex flex-col gap-3">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-[#5A635A]">Estimado desde</span>
-                    <span className="text-lg font-semibold text-[#1C2E1E]">
+                    <span className="text-lg font-semibold text-ink">
                       {fmt(estimatedTotal)}
                     </span>
                   </div>
@@ -127,13 +127,13 @@ export default function CartDrawer() {
                   </p>
                   <button
                     onClick={checkout}
-                    className="w-full bg-[#1C2E1E] text-white rounded-full py-3.5 font-medium hover:bg-[#2a4430] transition-colors"
+                    className="w-full bg-gradient-to-b from-[#E9CF8A] via-[#C9A23F] to-[#9C7726] text-ink rounded-full py-3.5 font-semibold hover:brightness-110 transition-all"
                   >
                     Finalizar pedido por WhatsApp
                   </button>
                   <button
                     onClick={clear}
-                    className="text-xs text-[#738273] hover:text-[#1C2E1E] transition-colors"
+                    className="text-xs text-[#738273] hover:text-gold-deep transition-colors"
                   >
                     Vaciar carrito
                   </button>

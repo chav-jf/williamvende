@@ -1,8 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500;1,600&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+
+  /* Premium palette inspired by the WILLIAM VENDE print catalog */
+  --color-ink: #0A0A0A;          /* near-black for premium sections */
+  --color-gold-light: #E9CF8A;
+  --color-gold: #C9A23F;         /* brand gold — use on DARK backgrounds */
+  --color-gold-deep: #8A6A1F;    /* gold for TEXT on LIGHT backgrounds (AA contrast) */
 }
 
 html {
@@ -18,6 +25,21 @@ html {
   animation: blink 1s step-end infinite;
 }
 
+/* Gold gradient text — reserve for DARK backgrounds (navbar overlay, footer, badges) */
+.gold-grad-text {
+  background-image: linear-gradient(180deg, #E9CF8A 0%, #C9A23F 48%, #9C7726 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Thin gold divider line (catalog-style section separator) */
+.gold-rule {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 63, 0.55), transparent);
+}
+
 /* Slim, on-brand scrollbar for the cart drawer */
 .cart-scroll::-webkit-scrollbar { width: 6px; }
-.cart-scroll::-webkit-scrollbar-thumb { background: #E3E7E3; border-radius: 9999px; }
+.cart-scroll::-webkit-scrollbar-thumb { background: rgba(201, 162, 63, 0.35); border-radius: 9999px; }

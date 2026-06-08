@@ -17,19 +17,23 @@ export default function Catalog() {
     >
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
         <div>
-          <p className="text-[#738273] text-sm uppercase tracking-widest">
+          <p className="flex items-center gap-2 text-gold-deep text-sm uppercase tracking-[0.28em] font-medium">
+            <span className="text-base leading-none">&#10022;</span>
             Catálogo
           </p>
+          <h2 className="mt-2 text-3xl md:text-4xl font-serif font-semibold tracking-tight text-ink">
+            Calidad premium, precio de importador
+          </h2>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {FILTERS.map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 filter === f
-                  ? 'bg-[#1C2E1E] text-white'
-                  : 'bg-white text-[#1C2E1E] border border-[#F1F3F1] hover:bg-[#F1F3F1]/55'
+                  ? 'bg-ink text-gold ring-1 ring-gold/30'
+                  : 'bg-white text-ink border border-black/15 hover:border-gold-deep hover:text-gold-deep'
               }`}
             >
               {f}
@@ -37,6 +41,8 @@ export default function Catalog() {
           ))}
         </div>
       </div>
+
+      <hr className="gold-rule mb-12" />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {shown.map((p, i) => (

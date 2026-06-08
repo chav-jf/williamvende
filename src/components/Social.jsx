@@ -10,8 +10,11 @@ export default function Social() {
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
           <div>
-            <p className="text-[#738273] text-sm uppercase tracking-widest mb-2">Redes</p>
-            <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-black">
+            <p className="flex items-center gap-2 text-gold-deep text-sm uppercase tracking-[0.28em] font-medium mb-2">
+              <span className="text-base leading-none">&#10022;</span>
+              Redes
+            </p>
+            <h2 className="text-4xl md:text-5xl font-serif font-semibold tracking-tight text-ink">
               Míranos en TikTok
             </h2>
           </div>
@@ -19,7 +22,7 @@ export default function Social() {
             href={tiktokProfile}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 self-start bg-[#1C2E1E] text-white px-5 py-3 rounded-full text-sm font-medium hover:bg-[#2a4430] transition-colors"
+            className="inline-flex items-center gap-2 self-start bg-ink text-gold px-5 py-3 rounded-full text-sm font-medium ring-1 ring-gold/30 hover:ring-gold/60 transition-all"
           >
             Síguenos @william.vende7 <ArrowUpRight className="w-4 h-4" />
           </a>
@@ -41,9 +44,9 @@ export default function Social() {
                 href={tiktokProfile}
                 target="_blank"
                 rel="noreferrer"
-                className="group aspect-[9/16] rounded-3xl border border-dashed border-[#C9D2C9] bg-white flex flex-col items-center justify-center gap-3 text-center p-6 hover:border-[#1C2E1E] transition-colors"
+                className="group aspect-[9/16] rounded-3xl border border-dashed border-[#C9D2C9] bg-white flex flex-col items-center justify-center gap-3 text-center p-6 hover:border-gold-deep transition-colors"
               >
-                <div className="w-14 h-14 rounded-full bg-[#1C2E1E] text-white flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-14 h-14 rounded-full bg-ink text-gold flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Play className="w-6 h-6 ml-0.5" fill="currentColor" />
                 </div>
                 <p className="text-sm text-[#5A635A]">Próximamente: video de TikTok</p>

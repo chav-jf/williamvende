@@ -9,8 +9,11 @@ export default function Reviews() {
       className="scroll-mt-24 w-full max-w-7xl mx-auto px-6 py-20 lg:py-28"
     >
       <div className="mb-10">
-        <p className="text-[#738273] text-sm uppercase tracking-widest mb-2">Reseñas</p>
-        <h2 className="text-4xl md:text-5xl font-normal tracking-tight text-black">
+        <p className="flex items-center gap-2 text-gold-deep text-sm uppercase tracking-[0.28em] font-medium mb-2">
+          <span className="text-base leading-none">&#10022;</span>
+          Reseñas
+        </p>
+        <h2 className="text-4xl md:text-5xl font-serif font-semibold tracking-tight text-ink">
           Clientes felices
         </h2>
       </div>
@@ -23,9 +26,9 @@ export default function Reviews() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-            className="rounded-3xl border border-[#F1F3F1] bg-white p-6 flex flex-col gap-4"
+            className="rounded-3xl border border-black/10 bg-white p-6 flex flex-col gap-4 hover:border-gold-deep/40 transition-colors"
           >
-            <div className="flex gap-0.5 text-[#1C2E1E]">
+            <div className="flex gap-0.5 text-gold-deep">
               {Array.from({ length: 5 }).map((_, s) => (
                 <Star
                   key={s}
