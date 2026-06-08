@@ -3,7 +3,7 @@ import { motion } from 'motion/react'
 import { products } from '../data/products'
 import ProductCard from './ProductCard'
 
-const FILTERS = ['Todos', 'AirPods', 'Apple Watch']
+const FILTERS = ['Todos', 'AirPods', 'Apple Watch', 'Accesorios']
 
 export default function Catalog() {
   const [filter, setFilter] = useState('Todos')

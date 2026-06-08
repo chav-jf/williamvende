@@ -1,57 +1,101 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // CATÁLOGO DE WILLIAM VENDE
-// Los precios son "DESDE" y de REFERENCIA en pesos colombianos (COP).
-// Edítalos libremente — el precio final se confirma por WhatsApp.
-// Para agregar un producto, copia un objeto y cambia id, name, blurb, priceFrom.
+// Precios en pesos colombianos (COP). El precio final se confirma por WhatsApp.
+// Para editar un precio cambia priceFrom. Para agregar un producto copia un objeto.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const products = [
+  // ── AirPods ──────────────────────────────────────────────────────────────
   {
-    id: 'airpods-pro-2-usbc',
-    name: 'AirPods Pro 2 (USB-C)',
+    id: 'airpods-3gen',
+    name: 'AirPods 3ª Generación',
     line: 'AirPods',
-    blurb: 'Cancelación activa de ruido, audio adaptativo y estuche de carga USB-C.',
-    priceFrom: 650000,
-    image: '/images/airpods.png',
+    blurb: 'Audio espacial personalizado, diseño resistente al agua y estuche de carga MagSafe.',
+    priceFrom: 49900,
+    image: '/images/productos/airpods-3gen.webp',
   },
   {
-    id: 'airpods-pro-2-lightning',
-    name: 'AirPods Pro 2 (Lightning)',
+    id: 'airpods-4gen',
+    name: 'AirPods 4ª Generación',
     line: 'AirPods',
-    blurb: 'El mismo sonido espacial con seguimiento de cabeza, conector Lightning.',
-    priceFrom: 590000,
-    image: '/images/airpods.png',
+    blurb: 'El diseño más cómodo de Apple, sonido reinventado y hasta 30 horas de reproducción.',
+    priceFrom: 69000,
+    image: '/images/productos/airpods-4gen.webp',
   },
   {
-    id: 'apple-watch-series-10',
-    name: 'Apple Watch Series 10',
-    line: 'Apple Watch',
-    blurb: 'Pantalla más grande y delgada, sensores de salud y carga rápida.',
-    priceFrom: 1250000,
-    image: '/images/relojes.png',
+    id: 'airpods-pro-2',
+    name: 'AirPods Pro 2',
+    line: 'AirPods',
+    blurb: 'Cancelación activa de ruido de nivel profesional, audio adaptativo y chip H2.',
+    priceFrom: 59900,
+    image: '/images/productos/airpods-pro-2.webp',
   },
   {
-    id: 'apple-watch-ultra-2',
+    id: 'airpods-max-azul',
+    name: 'AirPods Max — Azul Medianoche',
+    line: 'AirPods',
+    blurb: 'Sonido de alta fidelidad, cancelación de ruido premium y diseño over-ear de aluminio.',
+    priceFrom: 89900,
+    image: '/images/productos/airpods-max-azul.webp',
+  },
+  {
+    id: 'airpods-max-blancos',
+    name: 'AirPods Max — Blancos',
+    line: 'AirPods',
+    blurb: 'El mismo audio espectacular de los AirPods Max en el clásico blanco estelar de Apple.',
+    priceFrom: 89900,
+    image: '/images/productos/airpods-max-blancos.webp',
+  },
+
+  // ── Apple Watch ───────────────────────────────────────────────────────────
+  {
+    id: 'watch-ultra-2',
     name: 'Apple Watch Ultra 2',
     line: 'Apple Watch',
-    blurb: 'Caja de titanio, máxima autonomía y resistencia para aventura y deporte.',
-    priceFrom: 2900000,
-    image: '/images/relojes.png',
+    blurb: 'Caja de titanio, GPS de doble frecuencia y 36h de batería para aventura extrema.',
+    priceFrom: 130000,
+    image: '/images/productos/watch-ultra-2.webp',
   },
   {
-    id: 'apple-watch-se-2',
-    name: 'Apple Watch SE (2da gen)',
+    id: 'watch-series-10',
+    name: 'Apple Watch Series 10',
     line: 'Apple Watch',
-    blurb: 'La experiencia Apple Watch esencial al mejor precio.',
-    priceFrom: 850000,
-    image: '/images/relojes.png',
+    blurb: 'La pantalla más grande y delgada, detección de apnea del sueño y carga ultrarrrápida.',
+    priceFrom: 140000,
+    image: '/images/productos/watch-series-10.webp',
+  },
+
+  // ── Accesorios ────────────────────────────────────────────────────────────
+  {
+    id: 'cargador-usbc',
+    name: 'Cargador USB-C 20 W',
+    line: 'Accesorios',
+    blurb: 'Carga rápida para iPhone, iPad y MacBook. Compacto, potente y certificado.',
+    priceFrom: 20000,
+    image: '/images/productos/cargador-usbc.webp',
   },
   {
-    id: 'apple-watch-hermes',
-    name: 'Apple Watch Hermès',
-    line: 'Apple Watch',
-    blurb: 'Edición de lujo con correa Hermès y esferas exclusivas.',
-    priceFrom: 3500000,
-    image: '/images/relojes.png',
+    id: 'cable-lightning',
+    name: 'Cable USB-C a Lightning',
+    line: 'Accesorios',
+    blurb: 'Compatible con iPhone 14 y anteriores. Carga rápida y transferencia de datos.',
+    priceFrom: 18000,
+    image: '/images/productos/cable-lightning.webp',
+  },
+  {
+    id: 'cable-usbc',
+    name: 'Cable USB-C a USB-C',
+    line: 'Accesorios',
+    blurb: 'Compatible con iPhone 15+, iPad y MacBook. Ideal para carga y sincronización.',
+    priceFrom: 18000,
+    image: '/images/productos/cable-usbc.webp',
+  },
+  {
+    id: 'parlante-tg',
+    name: 'Parlante T&G',
+    line: 'Accesorios',
+    blurb: 'Sonido potente y grave, Bluetooth 5.0, resistente al agua y batería de larga duración.',
+    priceFrom: 60000,
+    image: '/images/productos/parlante-tg.webp',
   },
 ]
