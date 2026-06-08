@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ShoppingBag } from 'lucide-react'
 import { motion } from 'motion/react'
 import { useCart } from '../context/CartContext'
@@ -15,34 +15,86 @@ const WHATSAPP =
   'https://wa.me/573112179082?text=' +
   encodeURIComponent('Hola William, quiero más información sobre tus productos Apple.')
 
+/* ── motion variants ─────────────────────────────────────────── */
+const navContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.15 } },
+}
+const navItem = {
+  hidden: { opacity: 0, y: -10 },
+  show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 420, damping: 28 } },
+}
+
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { count, openCart } = useCart()
+
+  /* Glass effect on scroll */
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 56)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
-      <header className="fixed top-0 inset-x-0 z-10 px-5 sm:px-8 py-4 sm:py-5 flex flex-row justify-between items-center bg-transparent">
+      <motion.header
+        className={`fixed top-0 inset-x-0 z-10 px-5 sm:px-8 flex flex-row justify-between items-center transition-all duration-300 ${
+          scrolled
+            ? 'py-3 sm:py-3 bg-white/88 backdrop-blur-xl border-b border-black/[0.07] shadow-sm shadow-black/[0.04]'
+            : 'py-4 sm:py-5 bg-transparent'
+        }`}
+        initial={{ y: -64, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         {/* Logo */}
         <Logo variant="light" />
 
-        {/* Center nav (desktop) */}
-        <nav className="hidden md:flex flex-row items-center text-[23px] text-black">
-          {LINKS.map((l, i) => (
-            <span key={l.href} className="flex items-center">
-              <a href={l.href} className="hover:text-gold-deep transition-colors">
-                {l.label}
-              </a>
-              {i < LINKS.length - 1 && <span className="opacity-40">,&nbsp;</span>}
-            </span>
+        {/* Center nav — desktop */}
+        <motion.nav
+          className="hidden md:flex items-center gap-0.5"
+          variants={navContainer}
+          initial="hidden"
+          animate="show"
+        >
+          {LINKS.map((l) => (
+            <motion.a
+              key={l.href}
+              href={l.href}
+              variants={navItem}
+              whileHover={{ y: -2 }}
+              transition={{ type: 'spring', stiffness: 500, damping: 22 }}
+              className="px-3.5 py-2 text-[13.5px] font-medium tracking-[0.01em] text-black/70 hover:text-ink rounded-full hover:bg-black/[0.06] transition-colors duration-200"
+            >
+              {l.label}
+            </motion.a>
           ))}
-        </nav>
 
-        {/* Right: cart + CTA + hamburger */}
+          {/* WhatsApp pill */}
+          <motion.a
+            href={WHATSAPP}
+            target="_blank"
+            rel="noreferrer"
+            variants={navItem}
+            whileHover={{ y: -2, scale: 1.02 }}
+            transition={{ type: 'spring', stiffness: 500, damping: 22 }}
+            className="ml-2 px-4 py-[7px] text-[13.5px] font-medium text-black/75 hover:text-ink border border-black/[0.14] rounded-full hover:border-gold-deep/60 transition-colors duration-200"
+          >
+            WhatsApp
+          </motion.a>
+        </motion.nav>
+
+        {/* Right: cart + hamburger */}
         <div className="flex items-center gap-4 sm:gap-5">
-          <button
+          <motion.button
             onClick={openCart}
             aria-label="Abrir carrito"
             className="relative text-black hover:text-gold-deep transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.93 }}
+            transition={{ type: 'spring', stiffness: 500, damping: 22 }}
           >
             <ShoppingBag className="w-6 h-6" strokeWidth={1.6} />
             {count > 0 && (
@@ -56,16 +108,7 @@ export default function Navbar() {
                 {count}
               </motion.span>
             )}
-          </button>
-
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noreferrer"
-            className="hidden md:inline text-[23px] text-black underline underline-offset-2 decoration-gold-deep/60 hover:text-gold-deep transition-colors"
-          >
-            WhatsApp
-          </a>
+          </motion.button>
 
           {/* Hamburger (mobile) */}
           <button
@@ -91,7 +134,7 @@ export default function Navbar() {
             />
           </button>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile navigation overlay */}
       <div
